@@ -1,4 +1,4 @@
-# SecureSamesiteCookies
+# Rack::SecureSamesiteCookies
 
 This rack middleware gem for Rails 3 updates outgoing cookies to add both the secure flag if the app is being served over https
 and SameSite=None if the incoming lowercased HTTP_USER_AGENT string contains " chrome/".
@@ -19,7 +19,7 @@ And then execute:
 
 ## Usage
 
-If you bundle "rack-same_site_cookies", Rack::UserAgent will be automatically inserted when started.
+If you bundle "rack-same_site_cookies", Rack::SecureSamesiteCookies will be automatically inserted when started.
 
 ## Development
 
