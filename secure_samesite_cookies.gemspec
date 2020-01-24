@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/concord-consortium/secure-samesite-cookies"
   spec.license       = "MIT"
 
-  spec.add_dependency "rack", "~> 1.4.7"
+  spec.add_dependency "rack", ">= 1.4.7"
 
   if spec.respond_to?(:metadata)
     # Prevent pushing this gem to RubyGems.org by using fake host url
