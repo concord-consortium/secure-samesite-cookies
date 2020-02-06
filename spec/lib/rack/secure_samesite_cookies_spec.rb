@@ -35,14 +35,14 @@ describe "Rack::SecureSiteSiteCookies" do
   end
 
   describe "with non-ssl requests and chrome user-agents" do
-    it "does not add secure attribute but adds samesite attribute" do
+    it "does not add secure attribute or samesite attribute" do
       header "User-Agent", chrome_ua
       get "/"
-      assert_equal cookie_from_response(), "#{raw_cookie}; SameSite=None"
+      assert_equal cookie_from_response(), raw_cookie
     end
   end
 
-  describe "with ssl requests and non-chrome user-agents" do
+  describe "with ssl requests and chrome user-agents" do
     it "adds secure attribute and samesite attribute" do
       header "User-Agent", chrome_ua
       get "/", {}, {'HTTPS' => 'on'}
