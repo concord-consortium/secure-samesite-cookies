@@ -19,8 +19,8 @@ module Rack
         # set secure flag if this is https request
         add_secure = Rack::Request.new(env).ssl?
 
-        # add SiteSite attribute only for Chrome for now
-        add_same_site = !!(env["HTTP_USER_AGENT"] =~ /\schrome\//i)
+        # add SiteSite attribute only for Chrome for now when in secure mode
+        add_same_site = add_secure && !!(env["HTTP_USER_AGENT"] =~ /\schrome\//i)
 
         cookies.each do |cookie|
           # can't use .present? as we aren't running in rails in tests
