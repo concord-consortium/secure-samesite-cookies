@@ -21,8 +21,8 @@ module Rack
 
         # add SiteSite attribute only for Chrome 67+ for now when in secure mode
         # note: Chrome user-agents look like this: ... Chrome/66.0.3359.139 ...
-        chrome_match = (env["HTTP_USER_AGENT"] || "").match(/\s(chrome)\/(?<version>[^\s]+)/i)
-        is_chrome_67_or_greater = !!chrome_match && ((chrome_match[:version].split(".")[0] || "0").to_i >= 67)
+        chrome_match = (env["HTTP_USER_AGENT"] || "").match(/\s(chrome)\/(?<version>\d+)/i)
+        is_chrome_67_or_greater = !!chrome_match && (chrome_match[:version].to_i >= 67)
         add_same_site = add_secure && is_chrome_67_or_greater
 
         cookies.each do |cookie|
